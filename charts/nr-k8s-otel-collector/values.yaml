@@ -60,6 +60,14 @@ daemonset:
     privileged: true
   # -- Sets resources for the daemonset.
   resources: {}
+  # -- Settings controlling daemonset ConfigMap creation
+  # @default -- See `values.yaml`
+  configMap:
+    # daemonset.configMap.create -- (bool) Specifies whether a daemonset ConfigMap should be created
+    # @default -- `true`
+    create:
+    # If not set and create is true, a name is generated using the fullname template. If set and create is false, the configmap this points to MUST include the collector configuration via a key named 'deployment-config.yaml' or the collector will not start.
+    name: ""
 
 deployment:
   # -- Sets deployment pod node selector. Overrides `nodeSelector` and `global.nodeSelector`
@@ -76,6 +84,14 @@ deployment:
   containerSecurityContext: {}
   # -- Sets resources for the deployment.
   resources: {}
+  # -- Settings controlling deployment ConfigMap creation
+  # @default -- See `values.yaml`
+  configMap:
+    # deployment.configMap.create -- (bool) Specifies whether a deployment ConfigMap should be created
+    # @default -- `true`
+    create:
+    # If not set and create is true, a name is generated using the fullname template. If set and create is false, the configmap this points to MUST include the collector configuration via a key named 'deployment-config.yaml' or the collector will not start.
+    name: ""
 
 # -- Sets all pods' node selector. Can be configured also with `global.nodeSelector`
 nodeSelector: {}
