@@ -12,6 +12,7 @@
 {{- include "newrelic.common.naming.truncateToDNSWithSuffix" (dict "name" (include "newrelic.common.naming.fullname" .) "suffix" "deployment-config") -}}
 {{- end -}}
 
-{{- define "nrKubernetesOtel.daemonset.configmap.fullname" -}}
+{{/* Internal helper function to generate a default daemonset config map name when a name is not provided. */}}
+{{- define "nrKubernetesOtel.daemonset.configMap.defaultName" -}}
 {{- include "newrelic.common.naming.truncateToDNSWithSuffix" (dict "name" (include "newrelic.common.naming.fullname" .) "suffix" "daemonset-config") -}}
 {{- end -}}

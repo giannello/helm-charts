@@ -1,7 +1,8 @@
-apiVersion: v1 
+{{- if include "nrKubernetesOtel.daemonset.configMap.create" . }}
+apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "nrKubernetesOtel.daemonset.configmap.fullname" . }}
+  name: {{ include "nrKubernetesOtel.daemonset.configMap.name" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "newrelic.common.labels" . | nindent 4 }}
@@ -533,3 +534,4 @@ data:
           exporters:
             - otlphttp/newrelic
         {{- end }}
+{{- end -}}
