@@ -157,7 +157,7 @@ super-agent-deployment:
 
     auth:
       enabled: true
-      organization_id:
+      organizationId:
       experimental:
         headers:
         # - "-H \"Service-Gateway-Login-Context: ${SERVICE_GATEWAY_LOGIN_CONTEXT}\""

@@ -18,9 +18,9 @@ spec:
       serviceAccountName: {{ include "newrelic.common.serviceAccount.name" . }}
       containers:
         - name: register-system-identity
-          image: ubuntu  # TODO: We'll have to build an image for this.
+          image: alpine  # TODO: We'll have to build an image for this.
           command:
-            - bash
+            - ash
           args:
             - -c
             - |
@@ -33,6 +33,7 @@ spec:
               SECRET_NAME="{{ include "newrelic-super-agent.auth.secret.name" . }}"
               PRIVATE_KEY_SECRET_KEY="{{ include "newrelic-super-agent.auth.secret.privateKey.key" . }}"
               CLIENT_ID_SECRET_KEY="{{ include "newrelic-super-agent.auth.secret.clientId.key" . }}"
+              REGISTRATION_ENDPOINT="{{ include "newrelic-super-agent.config.endpoints.systemIdentityRegistration" . }}"
 
               {{- /* We know Helm has a template `genrsa` tp create certificates but we use this so we can debug easier */}}
               TEMPORAL_FOLDER=$(mktemp -d newrelic-super-agent.XXXXXXXXXX)
