@@ -47,7 +47,7 @@ Return to which endpoint should the super agent connect to get opamp data
 {{- if include "newrelic.common.nrStaging" . -}}
   https://opamp.staging-service.newrelic.com/v1/opamp
 {{- else -}}
-  {{- /* TODO: Add mor regions like EU. In the future, we can know it from the LicenseKey */ -}}
+  {{- /* TODO: Add more regions like EU. In the future, we can know it from the LicenseKey */ -}}
   https://opamp.service.newrelic.com/v1/opamp
 {{- end -}}
 {{- end -}}
@@ -61,7 +61,7 @@ Return to which endpoint should the super agent ask to renew its token
 {{- if include "newrelic.common.nrStaging" . -}}
   https://staging-system-identity-oauth.vip.cf.nr-ops.net/oauth2/token
 {{- else -}}
-  {{- /* TODO: Add mor regions like EU. In the future, we can know it from the LicenseKey */ -}}
+  {{- /* TODO: Add more regions like EU. In the future, we can know it from the LicenseKey */ -}}
   https://system-identity-oauth.vip.cf.nr-ops.net/oauth2/token
 {{- end -}}
 {{- end -}}
@@ -73,10 +73,10 @@ Return to which endpoint should the super agent register its system identity
 */ -}}
 {{- define "newrelic-super-agent.config.endpoints.systemIdentityRegistration" -}}
 {{- if include "newrelic.common.nrStaging" . -}}
-  https://staging-iam-service.vip.cf.nr-ops.net/system-identity/graphql
+  https://staging-api.newrelic.com/graphql
 {{- else -}}
-  {{- /* TODO: Add mor regions like EU. In the future, we can know it from the LicenseKey */ -}}
-  https://iam-service.vip.cf.nr-ops.net/system-identity/graphql
+  {{- /* TODO: Add more regions like EU. In the future, we can know it from the LicenseKey */ -}}
+  https://api.newrelic.com/graphql
 {{- end -}}
 {{- end -}}
 

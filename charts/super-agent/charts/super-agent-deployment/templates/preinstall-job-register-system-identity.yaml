@@ -44,7 +44,7 @@ spec:
               for RETRY in 1 2 3; do
                 HTTP_CODE=$(echo '{ "query":
                     "mutation {
-                      create(
+                      systemIdentityCreate(
                         name: \"'$NAME'\",
                         organizationId: \"{{ include "newrelic-super-agent.auth.organizationId" . }}\",
                         publicKey: \"'$(openssl enc -base64 -A -in "$TEMPORAL_FOLDER/pub")'\"
@@ -57,10 +57,10 @@ spec:
                   curl -X POST \
                     -s -w "%{http_code}" \
                     -H "Content-Type: application/json" \
-                    {{- range ((.Values.config).auth).headers | default list }}
+                    {{- range (((.Values.config).auth).experimental).headers | default list }}
                     -H "{{ . }}" \
                     {{- end }}
-                    -H "api-key: {{ index .Values "config" "superAgent" "content" "opamp" "headers" "api-key" }}" \
+                    -H "API-Key: {{ index .Values "config" "superAgent" "content" "opamp" "headers" "API-Key" }}" \
                     -o "$TEMPORAL_FOLDER/response.json" \
                     --data @- \
                     "$REGISTRATION_ENDPOINT"
